@@ -8,8 +8,7 @@ const config = require('../config'),
 
 /////////////////// CONFIG ///////////////////////
 
-const CLOC_SERVER_TAG = config.clocServerTag,
-      LOCAL_CERT_DIR  = config.localCertDir,
+const LOCAL_CERT_DIR  = config.localCertDir,
       REMOTE_USER     = config.remoteUser,
       REMOTE_CERT_DIR = config.remoteCertDir;
 
@@ -39,14 +38,15 @@ function syncCertsToIP(IP) {
 }
 
 function syncCertsToAllIPs(IPs) {
-  return Promise.map(IPs, IP => syncCertsToIP(IP));
+  return Promise.map(IPs, IP => syncCertsToIP(IP))
+    .then(() => {
+      console.log('Done syncing certs.\n');
+      return Promise.resolve(IPs);
+    });
 }
 
 //////////////////// MAIN ////////////////////////
 
-getIPs(config.clocServerTag).then(IPs => {
-  console.log('IPs:', IPs);
-  syncCertsToAllIPs(IPs).then(() => console.log("DONE"));
-});
+module.exports = syncCertsToAllIPs;
 
 
