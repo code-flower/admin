@@ -7,7 +7,7 @@ const token = require('../secrets').digitalOceanToken,
 
 //////////////// FUNCTIONS //////////////////
 
-function getIPs(name) {
+function getIPsByName(name) {
   return client.droplets.list().then(droplets => {
     return droplets
       .filter(droplet => droplet.name === name)
@@ -15,6 +15,17 @@ function getIPs(name) {
   });
 }
 
+function getIPsByTag(tag) {
+  return client.droplets.list().then(droplets => {
+    return droplets
+      .filter(droplet => droplet.tags.indexOf(tag) !== -1)
+      .map(droplet => droplet.networks.v4[0].ip_address);
+  });
+}
+
 ////////////////// MAIN /////////////////////
 
-getIPs('cloc-server').then(console.log);
+module.exports = {
+  getIPsByName,
+  getIPsByTag
+};
