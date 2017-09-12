@@ -11,6 +11,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "digitalocean": "^0.10.0",
+    "minimist": "^1.2.0",
     "module-alias": "^2.0.1"
   },
   "_moduleAliases": {

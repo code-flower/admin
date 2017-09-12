@@ -1,5 +1,11 @@
 #!/bin/bash
 
-certbot certonly --manual --preferred-challenges dns -d api.codeflower.la
-node scripts/syncCerts
-node scripts/cautiousReloads
+certbot renew --manual \
+  --preferred-challenges dns \
+  --manual-auth-hook ./authenticator.sh \
+  --manual-cleanup-hook ./cleanup.sh \
+  --domain api.codeflower.la
+  --dry-run
+
+node ../scripts/syncCerts
+node ../scripts/cautiousReloads
