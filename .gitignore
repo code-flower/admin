@@ -1,3 +1,4 @@
 node_modules/
 sslCert/
 secrets.js
+sftp-config.json
