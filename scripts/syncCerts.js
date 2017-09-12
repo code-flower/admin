@@ -1,14 +1,17 @@
 
 /////////////////// IMPORTS //////////////////////
 
-const config = require('../config'),
-      getIPs = require('./getIPs').getIPsByTag,
+require('module-alias/register');
+
+const config = require('@config'),
+      { listIPsForTag } = require('./DOapi').droplets,
       { exec } = require('child_process'),
       Promise = require('bluebird');
 
 /////////////////// CONFIG ///////////////////////
 
-const LOCAL_CERT_DIR  = config.localCertDir,
+const CLOC_SERVER_TAG = config.clocServerTag,
+      LOCAL_CERT_DIR  = config.localCertDir,
       REMOTE_USER     = config.remoteUser,
       REMOTE_CERT_DIR = config.remoteCertDir;
 
@@ -16,7 +19,7 @@ const LOCAL_CERT_DIR  = config.localCertDir,
 
 function syncLocalDirToRemote({localDir, remoteUser, remoteHost, remoteDir}) {
   return new Promise((resolve, reject) => {
-    let cmd = `rsync -a ${localDir} ${remoteUser}@${remoteHost}:${remoteDir}`;
+    let cmd = `rsync -rL ${localDir} ${remoteUser}@${remoteHost}:${remoteDir}`;
     exec(cmd, (err, stdout, stderr) => {
       if (err)
         reject(err);
@@ -33,21 +36,21 @@ function syncCertsToIP(IP) {
     remoteHost: IP,
     remoteDir:  REMOTE_CERT_DIR
   }).then(() => {
-    console.log("synced with:", IP);
+    console.log('synced with:', IP);
   });
 }
 
 function syncCertsToAllIPs(IPs) {
-  console.log("Syncing:", IPs);
+  console.log('\nSyncing:', IPs);
   return Promise.map(IPs, IP => syncCertsToIP(IP))
     .then(() => {
-      console.log('Done syncing certs.\n');
+      console.log('Done syncing certs.');
       return Promise.resolve(IPs);
     });
 }
 
 //////////////////// MAIN ////////////////////////
 
-module.exports = syncCertsToAllIPs;
+listIPsForTag(CLOC_SERVER_TAG).then(syncCertsToAllIPs);
 
 

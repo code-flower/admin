@@ -24,4 +24,9 @@ sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install certbot
+
+# old method
 certbot certonly --standalone -d api.codeflower.la
+
+# new method
+certbot certonly --manual --preferred-challenges dns -d api.codeflower.la
