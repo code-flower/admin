@@ -38,6 +38,7 @@ function syncCertsToIP(IP) {
 }
 
 function syncCertsToAllIPs(IPs) {
+  console.log("Syncing:", IPs);
   return Promise.map(IPs, IP => syncCertsToIP(IP))
     .then(() => {
       console.log('Done syncing certs.\n');
