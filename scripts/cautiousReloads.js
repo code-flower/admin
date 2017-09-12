@@ -1,7 +1,9 @@
 
 /////////////////// IMPORTS /////////////////////
 
-const config = require('../config'),
+require('module-alias/register');
+
+const config = require('@config'),
       { listIPsForTag } = require('./DOapi').droplets,
       { exec } = require('child_process'),
       Promise = require('bluebird');
