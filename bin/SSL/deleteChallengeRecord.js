@@ -1,7 +1,8 @@
+#!/usr/bin/env node
 
 //////////////////// IMPORTS ///////////////////////
 
-const { deleteDNSChallengeRecord } = require('./DOapi').domains;
+const { deleteDNSChallengeRecord } = require('../lib/cloud').domains;
 
 ////////////////////// MAIN ////////////////////////
 

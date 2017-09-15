@@ -1,4 +1,5 @@
 
+const secrets = require('./secrets');
 
 module.exports = {
   codeflowerDomain: 'codeflower.la',
@@ -14,5 +15,8 @@ module.exports = {
   remoteUser:       'root',
   remoteCertDir:    '/etc/letsencrypt/live/api.codeflower.la/',
 
-  DNSChallengeName: '_acme-challenge.api'
+  DNSChallengeName: '_acme-challenge.api',
+
+  sendgrid: secrets.sendgrid,
+  DOtoken: secrets.DOtoken
 };

@@ -9,7 +9,7 @@ sudo apt-get update
 sudo apt-get install git
 ```
 
-2. install node 8.4.0 and npm
+2. install node 8.5.0 and npm
 
 Instructions here: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04
 

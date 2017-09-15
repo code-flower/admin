@@ -1,10 +1,11 @@
+#!/usr/bin/env node
 
 /////////////////// IMPORTS //////////////////////
 
 require('module-alias/register');
 
 const config = require('@config'),
-      { listIPsForTag } = require('./DOapi').droplets;
+      { listIPsForTag } = require('../lib/cloud').machines;
 
 /////////////////// CONFIG ///////////////////////
 

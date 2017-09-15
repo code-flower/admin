@@ -1,7 +1,8 @@
+#!/usr/bin/env node
 
 //////////////////// IMPORTS ///////////////////////
 
-const { createDNSChallengeRecord } = require('./DOapi').domains,
+const { createDNSChallengeRecord } = require('../lib/cloud').domains,
       argv = require('minimist')(process.argv);
 
 ////////////////////// MAIN ////////////////////////
