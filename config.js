@@ -2,21 +2,22 @@
 const secrets = require('./secrets');
 
 module.exports = {
-  codeflowerDomain: 'codeflower.la',
-  clocServerTag:    'cloc-server',
+  codeflowerDomain:    'codeflower.la',
+  codeflowerApiDomain: 'api.codeflower.la',
 
-  //localCertDir:     '/etc/letsencrypt/live/api.codeflower.la/',
-  localCertDir:     __dirname + '/../sslAdmin/',
-  privkey:   'privkey.pem',
-  cert:      'cert.pem',
-  fullChain: 'fullchain.pem',
+  // DO token and resources
+  DOtoken:              secrets.DOtoken,
+  clocServerTag:        'cloc-server',
+  clocServerCertPrefix: 'cloc-server-cert-',
+  loadBalancerName:     'cloc-server-lb',
 
-  // remote these two if we go to ssl-termination
-  remoteUser:       'root',
-  remoteCertDir:    '/etc/letsencrypt/live/api.codeflower.la/',
-
+  // cert management
   DNSChallengeName: '_acme-challenge.api',
+  localCertDir:     '/etc/letsencrypt/live/api.codeflower.la/',
+  privkey:          'privkey.pem',
+  cert:             'cert.pem',
+  fullChain:        'fullchain.pem',
 
-  sendgrid: secrets.sendgrid,
-  DOtoken: secrets.DOtoken
+  // sendgrid
+  sendgrid: secrets.sendgrid
 };

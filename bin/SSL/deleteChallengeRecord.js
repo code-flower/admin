@@ -2,9 +2,11 @@
 
 //////////////////// IMPORTS ///////////////////////
 
-const { deleteDNSChallengeRecord } = require('../lib/cloud').domains;
+require('module-alias/register');
+
+const { deleteDNSChallengeRecord } = require('@lib/cloud').domains;
 
 ////////////////////// MAIN ////////////////////////
 
-console.log("Deleting DNS record");
+console.log("Deleting DNS challenge record");
 deleteDNSChallengeRecord();

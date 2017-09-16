@@ -29,6 +29,13 @@ sudo apt-get install certbot
 
 5. run `npm install`
 
+6. set up crontab to run SSH renewal script once a month
+
+# open crontab
+crontab -e
+# add this line
+38 16 16 * * cd /root/admin/bin/SSL && ./renewCert.js
+
 ## Actions
 
 ### Droplets

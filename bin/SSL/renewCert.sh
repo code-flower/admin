@@ -1,9 +1,8 @@
 #!/bin/bash
 
-sudo certbot certonly --manual \
+sudo certbot renew --manual \
+  --force-renewal \
   --preferred-challenges dns \
   --manual-auth-hook ./createChallengeRecord.js \
   --manual-cleanup-hook ./deleteChallengeRecord.js \
-  --domain api.codeflower.la \
-  #--dry-run
-
+  --deploy-hook ./deployCertOnDO.js
