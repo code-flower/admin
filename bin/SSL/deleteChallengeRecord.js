@@ -4,9 +4,19 @@
 
 require('module-alias/register');
 
-const { deleteDNSChallengeRecord } = require('@lib/cloud').domains;
+const config = require('@config'),
+      { deleteDNSChallengeRecord } = require('@lib/DO').domains;
+
+///////////////////// CONFIG ///////////////////////
+
+const DOMAIN = config.domain;
 
 ////////////////////// MAIN ////////////////////////
 
-console.log("Deleting DNS challenge record");
-deleteDNSChallengeRecord();
+console.log("Domain:", process.env.CERTBOT_DOMAIN);
+
+let subdomain = process.env.CERTBOT_DOMAIN
+                .replace(DOMAIN, '')
+                .replace('.', '');
+
+deleteDNSChallengeRecord(subdomain);

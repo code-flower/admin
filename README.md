@@ -1,5 +1,11 @@
 
 
+## Overview
+
+Provides admin functionality for the entire codeflower application.
+
+`bin` contains executables; `lib` contains functions.
+
 ## Installation
 
 1. install git
@@ -46,11 +52,11 @@ crontab -e
 
 ### SSL Certs
 
-1. generate a cert: `cd bin; ./createCert.sh`
+1. generate a cert: `cd bin/SSL; ./createCert.sh`
 
-2. sync the cert with all running 'cloc-server' droplets, and then initiate a cautious reload on each: `cd bin; ./syncAndReload.sh`
+2. replace the cert on digital ocean: `cd bin/SSL; ./deployCertOnDO.js`
 
-3. attempt to renew the cert, and if it renews (because it's close to the expiration date), sync it with all 'cloc-server' droplets, and initiate cautious reload on each: `cd bin; ./cycleCert.sh`
+3. renew the existing cert, and if it renews successfully, replace the cert on DO: `cd bin/SSL; ./renewCert.sh`
 
 ### Monitoring
 

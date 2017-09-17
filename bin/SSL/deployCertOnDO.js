@@ -5,15 +5,15 @@
 require('module-alias/register');
 
 const config = require('@config'),
-      certs = require('@lib/cloud').certificates,
-      lbs = require('@lib/cloud').loadBalancers,
+      certs = require('@lib/DO').certificates,
+      lbs = require('@lib/DO').loadBalancers,
       sendAlert = require('@lib/util/sendAlert'),
       Promise = require('bluebird');
 
 ///////////////////// CONFIG ///////////////////////
 
-const LOAD_BALANCER_NAME = config.loadBalancerName;
-const CLOC_SERVER_CERT_PREFIX = config.clocServerCertPrefix;
+const LOAD_BALANCER_NAME      = config.DO.loadBalancerName;
+const CLOC_SERVER_CERT_PREFIX = config.DO.clocServerCertPrefix;
 
 ////////////////////// MAIN ////////////////////////
 

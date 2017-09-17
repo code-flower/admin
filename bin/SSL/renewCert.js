@@ -9,7 +9,7 @@ const exec = require('@lib/util/exec'),
 
 ////////////////////////// MAIN //////////////////////////
 
-let cmd = 'certbot renew --manual \
+let cmd = 'sudo certbot renew --manual \
   --force-renewal \
   --preferred-challenges dns \
   --manual-auth-hook ./createChallengeRecord.js \

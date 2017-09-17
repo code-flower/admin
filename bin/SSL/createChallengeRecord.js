@@ -4,12 +4,21 @@
 
 require('module-alias/register');
 
-const { createDNSChallengeRecord } = require('@lib/cloud').domains;
+const config = require('@config'),
+      { createDNSChallengeRecord } = require('@lib/DO').domains;
+
+///////////////////// CONFIG ///////////////////////
+
+const DOMAIN = config.domain;
 
 ////////////////////// MAIN ////////////////////////
 
-console.log("Creating DNS challenge record:");
-console.log(process.env.CERTBOT_DOMAIN);
-console.log(process.env.CERTBOT_VALIDATION);
+console.log("Domain:    ", process.env.CERTBOT_DOMAIN);
+console.log("Validation:", process.env.CERTBOT_VALIDATION);
 
-createDNSChallengeRecord(process.env.CERTBOT_VALIDATION);
+let subdomain = process.env.CERTBOT_DOMAIN
+                .replace(DOMAIN, '')
+                .replace('.', '');
+
+createDNSChallengeRecord(subdomain, process.env.CERTBOT_VALIDATION);
+
