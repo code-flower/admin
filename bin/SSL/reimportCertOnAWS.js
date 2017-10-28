@@ -9,7 +9,7 @@ const certs = require('@lib/AWS').certificates,
 
 ///////////////////// MAIN /////////////////////////
 
-certs.importCertificate()
+certs.reimportCertificate()
   .then(() => {
     console.log('CERT SUCCESSFULLY REIMPORTED ON AWS');
     sendAlert('codeflower: cert successfully reimported on AWS', '');
