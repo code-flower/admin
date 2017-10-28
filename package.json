@@ -9,8 +9,11 @@
   "author": "Jake Mensch",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.141.0",
     "bluebird": "^3.5.0",
+    "body-parser": "^1.18.2",
     "digitalocean": "^0.10.0",
+    "express": "^4.16.2",
     "module-alias": "^2.0.1",
     "sendgrid": "^5.2.3"
   },

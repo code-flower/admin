@@ -34,11 +34,11 @@ certs.listCertificates()
   .then(newCert => lbs.updateCertId(LOAD_BALANCER_NAME, newCert.id))
   .then(() => Promise.map(oldCertIds, id => certs.deleteCertificate(id)))
   .then(() => {
-    console.log('CERT SUCCESSFULLY UPDATED');
-    sendAlert('codeflower: cert successfully update', '');
+    console.log('CERT SUCCESSFULLY DEPLOYED ON DO');
+    sendAlert('codeflower: cert successfully deployed on DO', '');
   })
   .catch(err => {
-    console.log('ERROR UPDATING CERT:', err);
-    sendAlert('codeflower: error updating cloc-server SSL cert', err);
+    console.log('ERROR DEPLOYING CERT ON DO:', err);
+    sendAlert('codeflower: error deploying cert on DO', err);
   });
 

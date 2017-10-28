@@ -18,6 +18,10 @@ module.exports = {
     loadBalancerName:     'cloc-server-lb'
   },
 
+  AWS: {
+    creds: secrets.AWScreds,
+  },
+
   // cert management
   cert: {
     path:         '/etc/letsencrypt/live/api.codeflower.la/',
@@ -28,5 +32,5 @@ module.exports = {
 
   // sendgrid
   sendgrid: secrets.sendgrid
-  
+
 };

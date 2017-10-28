@@ -14,7 +14,7 @@ let cmd = 'sudo certbot renew --manual \
   --preferred-challenges dns \
   --manual-auth-hook ./createChallengeRecord.js \
   --manual-cleanup-hook ./deleteChallengeRecord.js \
-  --deploy-hook ./deployCertOnDO.js';
+  --deploy-hook ./deployCertOnDO.js; ./reimportCertOnAWS.js';
 
 exec(cmd, (err, stdout, stderr) => {
   let msg = 'STDOUT<br/>' + stdout + '<br/><br/>STDERR<br/>' + stderr;
