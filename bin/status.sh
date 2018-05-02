@@ -30,10 +30,10 @@ function healthCheck(IPs) {
       .then(res => [ IP, res.statusCode ]);
   })
   .then(responses => {
-    console.log('HEALTH CHECKS');
     responses.forEach(res => {
       console.log(`${res[0]}: ${res[1]}`);
     });
+    console.log('');
     return null;
   });
 }
@@ -41,15 +41,15 @@ function healthCheck(IPs) {
 function getLogs(IPs) {
   return Promise.mapSeries(IPs, IP => {
     return exec(`ssh root@${IP} 'cat ${REMOTE_LOG_FILE}'`)
-      .catch(() => 'No log file.')
+      .catch(() => `No log file for ${IP}.`)
   })
   .then(logs => {
     IPs.forEach((IP, idx) => {
-      console.log(`\n------------- ${IP} ---------------`);
+      console.log(`------------- ${IP} ---------------`);
       if (logs[idx])
         console.log(logs[idx]);
       else
-        console.log('No log content.');
+        console.log('No log content.\n');
     })
     return null;
   });

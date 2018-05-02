@@ -41,7 +41,7 @@ sudo apt-get install certbot
 crontab -e
 # add this line
 38 16 16 * * cd /root/admin/bin/SSL && ./renewCert.js
-0 7 * * * cd /root/admin/bin && ./healthCheck.js
+0 7 * * * cd /root/admin && npm run status-report
 
 ## Global SSL Notes
 
