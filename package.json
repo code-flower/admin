@@ -4,7 +4,9 @@
   "description": "administrive functions for the entire app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "status-report": "bin/status.sh | bin/email.sh --subject 'codeflower status'",
+    "show-ips": "bin/showIPs.sh"
   },
   "author": "Jake Mensch",
   "license": "ISC",
@@ -14,10 +16,11 @@
     "body-parser": "^1.18.2",
     "digitalocean": "^0.10.0",
     "express": "^4.16.2",
+    "minimist": "^1.2.0",
+    "mkpath": "^1.0.0",
     "module-alias": "^2.0.1",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "sendgrid": "^5.2.3"
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
   },
   "_moduleAliases": {
     "@config": "./config",

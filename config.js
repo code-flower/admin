@@ -28,9 +28,6 @@ module.exports = {
     privateKey:   'privkey.pem',
     certificate:  'cert.pem',
     fullChain:    'fullchain.pem',
-  },
-
-  // sendgrid
-  sendgrid: secrets.sendgrid
+  }
 
 };
