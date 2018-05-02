@@ -10,14 +10,10 @@ const config = require('@config');
 const { listIPsForTag } = require('@lib/DO').droplets;
 const sendAlert = require('@lib/util/sendAlert');
 const exec = require('@lib/util/exec');
-const makePath = require('@lib/util/makePath');
-const readFile = require('@lib/util/readFile');
-const writeFile = require('@lib/util/writeFile');
 
 /////////////////// CONFIG ///////////////////////
 
 const CLOC_SERVER_TAG = config.DO.clocServerTag;
-const LOGS_DIR = makePath(__dirname + '/tmp');
 const REMOTE_LOG_FILE = '/root/cloc-server/logs/out.log';
 
 //////////////////// FUNCTIONS ///////////////////
