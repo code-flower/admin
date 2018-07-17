@@ -27,7 +27,8 @@ let oldCertIds,
 
 certs.listCertificates()
   .then(certs => {
-    oldCertIds = certs.map(cert => cert.id);
+    oldCertIds = certs.filter(cert => cert.name !== certName)
+                      .map(cert => cert.id);
     return Promise.resolve();
   })
   .then(() => certs.createCertificate(certName))
