@@ -47,6 +47,8 @@ crontab -e
 
 UPDATE 3/20/19 -- Digital Ocean now creates and renews the SSL certs on its own, so the renewal script no longer applies to DO. Still applies to AWS.
 
+UPDATE 7/5/19 -- The client is now hosted on firebase, which maintains SSL certs on its own, so the renewal script is no longer necessary at all. Deleted the line from crontab.
+
 -----
 
 The cloc-server and client-web application both use the same SSL cert. The cert files are generate by letsencrypt/certbot and live on the admin server. They expire every 90 days. There is a cronjob on the admin server that checks whether the certs need to be renewed and renews them when the expiration date is close.
