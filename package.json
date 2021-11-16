@@ -11,7 +11,7 @@
   "author": "Jake Mensch",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.426.0",
+    "aws-sdk": "^2.814.0",
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
     "digitalocean": "^0.10.0",
